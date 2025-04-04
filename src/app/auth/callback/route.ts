@@ -1,4 +1,6 @@
+import { createUser, getUserByAuthId } from '@/app/service/api/user';
 import { createClient } from '@/app/utils/supabase/server'
+import { PrismaClient } from '@prisma/client';
 import { NextResponse } from 'next/server'
 // The client you created from the Server-Side Auth instructions
 
@@ -10,9 +12,10 @@ export async function GET(request: Request) {
 
   if (code) {
     const supabase = await createClient()
+    const prisma = new PrismaClient()
     const { data, error } = await supabase.auth.exchangeCodeForSession(code)
-    if (data.user?.id) {
-        await supabase.from('User').insert({authId: data.user.id, name: 'No Name'})
+    if (data.user?.id && !await(getUserByAuthId(data.user.id))) {
+        await createUser(data.user.id, 'No Name')
     }
     if (!error) {
       const forwardedHost = request.headers.get('x-forwarded-host') // original origin before load balancer
