@@ -40,9 +40,12 @@
     "typescript": "^5"
   },
   "lint-staged": {
-   "src/**/*.{js,jsx,ts,tsx}": [
-     "eslint --fix",
-     "prettier --write"
-   ]
- }
+    "src/**/*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ]
+  },
+  "volta": {
+    "node": "22.12.0"
+  }
 }
