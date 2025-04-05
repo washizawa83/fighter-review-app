@@ -7,14 +7,13 @@ export const TopPage = () => {
   return (
     <BasePageLayout>
       <div>
-        <SearchForm />
+        <div className="py-10">
+          <SearchForm />
+        </div>
         <div>
           <h2 className="text-2xl mb-2">Pick Reviews</h2>
           <ReviewCommentList />
         </div>
-      </div>
-      <div>
-        <ReviewForm />
       </div>
     </BasePageLayout>
   )

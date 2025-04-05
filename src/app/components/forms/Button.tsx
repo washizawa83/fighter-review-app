@@ -7,6 +7,7 @@ export const button = tv({
   variants: {
     color: {
       success: 'bg-green-500 text-slate-100',
+      secondary: 'bg-zinc-700 text-slate-100',
     },
   },
   defaultVariants: {

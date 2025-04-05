@@ -1,6 +1,6 @@
 export const SearchForm = () => {
   return (
-    <div className="my-10">
+    <div>
       <label htmlFor="search">User Code</label>
       <input
         id="search"
