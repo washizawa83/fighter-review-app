@@ -28,6 +28,35 @@ export const characterNameList: CharacterNames[] = [
     'RYU'
 ]
 
+export const characterDataMap = [
+    {value: 0, name: 'TERRY'},
+    {value: 1, name: 'MAI'},
+    {value: 2, name: 'VEGA'},
+    {value: 3, name: 'GOUKI'},
+    {value: 4, name: 'ED'},
+    {value: 5, name: 'AKI'},
+    {value: 6, name: 'RASHvalue'},
+    {value: 7, name: 'CAMMY'},
+    {value: 8, name: 'LILY'},
+    {value: 9, name: 'ZANGIEF'},
+    {value: 10, name: 'JP'},
+    {value: 11, name: 'MARISA'},
+    {value: 12, name: 'MANON'},
+    {value: 13, name: 'DEEJAY'},
+    {value: 14, name: 'E.HONDA'},
+    {value: 15, name: 'DHALSIM'},
+    {value: 16, name: 'BLANKA'},
+    {value: 17, name: 'KEN'},
+    {value: 18, name: 'JURI'},
+    {value: 19, name: 'KIMBERLY'},
+    {value: 20, name: 'GUILE'},
+    {value: 21, name: 'CHUNLI'},
+    {value: 22, name: 'JAMIE'},
+    {value: 23, name: 'LUKE'},
+    {value: 24, name: 'RYU'}
+]
+
+
 export const emotionFlameRanges = [
     -99, -98, -97, -96, -95, -94, -93, -92, -91, -90,
     -89, -88, -87, -86, -85, -84, -83, -82, -81, -80,
@@ -50,4 +79,10 @@ export const emotionFlameRanges = [
      81,  82,  83,  84,  85,  86,  87,  88,  89,  90,
      91,  92,  93,  94,  95,  96,  97,  98,  99
 ]
-  
+
+export const convertEmotionFlameRangesOptions = () => {
+    return emotionFlameRanges.map((range) => ({
+        value: range,
+        name: range.toString()
+    }))
+}

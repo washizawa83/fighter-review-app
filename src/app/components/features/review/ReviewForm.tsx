@@ -1,9 +1,22 @@
-import { characterNameList, emotionFlameRanges } from '@/app/utils/app-util'
+import {
+  characterDataMap,
+  convertEmotionFlameRangesOptions,
+} from '@/app/utils/app-util'
 import { SelectBox } from '../../forms/SelectBox'
 import { Button } from '../../forms/Button'
 import { z } from 'zod'
 import { FieldValues, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { getCurrentAuthUser } from '@/app/service/auth'
+import { getUserByAuthId } from '@/app/service/api/user'
+import { v4 as uuidv4 } from 'uuid'
+import { createReview } from '@/app/service/api/review'
+import { ReviewRequestType } from '@/app/types/review/type'
+import { useState } from 'react'
+
+type Props = {
+  onClose: () => void
+}
 
 const schema = z.object({
   userCode: z
@@ -37,7 +50,7 @@ const schema = z.object({
     .transform((val) => Number(val)),
 })
 
-export const ReviewForm = () => {
+export const ReviewForm = ({ onClose }: Props) => {
   const {
     register,
     handleSubmit,
@@ -45,7 +58,24 @@ export const ReviewForm = () => {
   } = useForm({ resolver: zodResolver(schema) })
 
   const onSubmit = async (data: FieldValues) => {
-    console.log(data)
+    const authUser = await getCurrentAuthUser()
+    if (!authUser) return
+    const user = await getUserByAuthId(authUser.id)
+    if (!user) return
+
+    const postData: ReviewRequestType = {
+      id: uuidv4(),
+      userId: user.id,
+      userCode: data.userCode,
+      message: data.message,
+      toCharacterId: data.to,
+      fromCharacterId: data.from,
+      emotionFlame: data.emotionFlame,
+    }
+
+    await createReview(postData)
+      .then(() => onClose())
+      .catch(() => {})
   }
 
   return (
@@ -87,8 +117,8 @@ export const ReviewForm = () => {
           <div>
             <SelectBox
               defaultSelectMessage="your character"
-              options={characterNameList}
-              registerName="to"
+              options={characterDataMap}
+              registerName="from"
               register={register}
               errors={errors}
             />
@@ -99,8 +129,8 @@ export const ReviewForm = () => {
           <div>
             <SelectBox
               defaultSelectMessage="opponent character"
-              options={characterNameList}
-              registerName="from"
+              options={characterDataMap}
+              registerName="to"
               register={register}
               errors={errors}
             />
@@ -110,8 +140,8 @@ export const ReviewForm = () => {
           <p className="text-lg text-slate-100">Emotion Flame :</p>
           <div className="px-2">
             <SelectBox
-              defaultValue={99}
-              options={emotionFlameRanges}
+              defaultValue={0}
+              options={convertEmotionFlameRangesOptions()}
               isRightAlign={true}
               registerName="emotionFlame"
               register={register}
@@ -121,7 +151,7 @@ export const ReviewForm = () => {
           <span className="text-slate-100">F</span>
         </div>
         <div className="flex justify-end">
-          <Button type="submit" label="Post" handleClick={() => {}} />
+          <Button type="submit" label="Post" handleClick={() => onClose()} />
         </div>
       </form>
     </div>

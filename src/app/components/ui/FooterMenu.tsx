@@ -25,7 +25,7 @@ export const FooterMenu = () => {
             </button>
           </div>
           <BasePageLayout>
-            <ReviewForm />
+            <ReviewForm onClose={() => setIsOpen(false)} />
           </BasePageLayout>
         </div>
       ) : (

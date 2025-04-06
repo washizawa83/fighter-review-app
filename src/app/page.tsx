@@ -1,9 +1,11 @@
 import { ReviewCommentList } from './components/features/review/ReviewCommentList'
-import { ReviewForm } from './components/features/review/ReviewForm'
 import { SearchForm } from './components/forms/SearchForm'
 import { BasePageLayout } from './components/layouts/BasePageLayout'
+import { getReviews } from './service/api/review'
 
-export const TopPage = () => {
+export const TopPage = async () => {
+  const reviews = await getReviews()
+
   return (
     <BasePageLayout>
       <div>
@@ -12,7 +14,7 @@ export const TopPage = () => {
         </div>
         <div>
           <h2 className="text-2xl mb-2">Pick Reviews</h2>
-          <ReviewCommentList />
+          <ReviewCommentList reviews={reviews} />
         </div>
       </div>
     </BasePageLayout>
