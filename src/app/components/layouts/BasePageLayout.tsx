@@ -6,7 +6,7 @@ type Props = {
 
 export const BasePageLayout = ({ children }: Props) => {
   return (
-    <div className="w-content lg:w-5/6 xl:px-0 w-full h-full mx-auto px-8">
+    <div className={`w-content lg:w-5/6 xl:px-0 w-full mx-auto px-8 h-full`}>
       {children}
     </div>
   )

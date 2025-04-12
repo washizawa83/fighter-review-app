@@ -8,7 +8,7 @@ import { FcGoogle } from 'react-icons/fc'
 export default function LoginPage() {
   return (
     <BasePageLayout>
-      <div className="flex flex-col items-center justify-center mt-12 p-4 bg-gray-200 rounded-lg">
+      <div className="flex flex-col items-center justify-center p-4 bg-gray-200 rounded-lg">
         <h2 className="flex items-center justify-center w-full text-4xl mb-4">
           Login
         </h2>
