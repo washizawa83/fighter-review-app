@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE "Review" ALTER COLUMN "userCode" SET DATA TYPE BIGINT;

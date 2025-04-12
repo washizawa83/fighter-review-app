@@ -1,13 +1,6 @@
 'use client'
 
-import {
-  cancelBadReview,
-  cancelLikeReview,
-  getReview,
-  onBadReview,
-  onLikeReview,
-  toggleEvaluationReview,
-} from '@/app/service/api/review'
+import { getReview, toggleEvaluationReview } from '@/app/service/api/review'
 import { getUserByAuthId } from '@/app/service/api/user'
 import { getCurrentAuthUser } from '@/app/service/auth'
 import {
@@ -17,7 +10,12 @@ import {
 import { ReviewEvaluation } from '@/app/utils/review-util'
 import { useState } from 'react'
 import { IconContext } from 'react-icons'
-import { AiOutlineDislike, AiOutlineLike } from 'react-icons/ai'
+import {
+  AiFillDislike,
+  AiFillLike,
+  AiOutlineDislike,
+  AiOutlineLike,
+} from 'react-icons/ai'
 
 export const ReviewComment = (props: ReviewResponseType) => {
   const isNegativeFlame = (emotionFlame: number) => {
@@ -64,7 +62,7 @@ export const ReviewComment = (props: ReviewResponseType) => {
               onClick={() => onToggleEvaluation(ReviewEvaluation.Like)}
             >
               <IconContext.Provider value={{ size: '24' }}>
-                <AiOutlineLike />
+                {hasLikeReview ? <AiFillLike /> : <AiOutlineLike />}
               </IconContext.Provider>
             </button>
             <span className="ml-2">{likeCount}</span>
@@ -75,7 +73,7 @@ export const ReviewComment = (props: ReviewResponseType) => {
               onClick={() => onToggleEvaluation(ReviewEvaluation.Bad)}
             >
               <IconContext.Provider value={{ size: '24' }}>
-                <AiOutlineDislike />
+                {hasBadReview ? <AiFillDislike /> : <AiOutlineDislike />}
               </IconContext.Provider>
             </button>
             <span className="ml-2">{badCount}</span>

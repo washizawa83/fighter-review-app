@@ -12,7 +12,6 @@ import { getUserByAuthId } from '@/app/service/api/user'
 import { v4 as uuidv4 } from 'uuid'
 import { createReview } from '@/app/service/api/review'
 import { ReviewRequestType } from '@/app/types/review/type'
-import { useState } from 'react'
 
 type Props = {
   onClose: () => void
@@ -72,6 +71,8 @@ export const ReviewForm = ({ onClose }: Props) => {
       fromCharacterId: data.from,
       emotionFlame: data.emotionFlame,
     }
+
+    console.log(postData)
 
     await createReview(postData)
       .then(() => onClose())

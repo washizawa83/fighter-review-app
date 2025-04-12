@@ -48,7 +48,7 @@ export type User = z.infer<typeof UserSchema>
 export const ReviewSchema = z.object({
   id: z.string().uuid(),
   userId: z.string(),
-  userCode: z.number().int(),
+  userCode: z.bigint(),
   message: z.string(),
   toCharacterId: z.number().int(),
   fromCharacterId: z.number().int(),
@@ -318,7 +318,7 @@ export const ReviewWhereInputSchema: z.ZodType<Prisma.ReviewWhereInput> = z.obje
   NOT: z.union([ z.lazy(() => ReviewWhereInputSchema),z.lazy(() => ReviewWhereInputSchema).array() ]).optional(),
   id: z.union([ z.lazy(() => StringFilterSchema),z.string() ]).optional(),
   userId: z.union([ z.lazy(() => StringFilterSchema),z.string() ]).optional(),
-  userCode: z.union([ z.lazy(() => IntFilterSchema),z.number() ]).optional(),
+  userCode: z.union([ z.lazy(() => BigIntFilterSchema),z.bigint() ]).optional(),
   message: z.union([ z.lazy(() => StringFilterSchema),z.string() ]).optional(),
   toCharacterId: z.union([ z.lazy(() => IntFilterSchema),z.number() ]).optional(),
   fromCharacterId: z.union([ z.lazy(() => IntFilterSchema),z.number() ]).optional(),
@@ -356,7 +356,7 @@ export const ReviewWhereUniqueInputSchema: z.ZodType<Prisma.ReviewWhereUniqueInp
   OR: z.lazy(() => ReviewWhereInputSchema).array().optional(),
   NOT: z.union([ z.lazy(() => ReviewWhereInputSchema),z.lazy(() => ReviewWhereInputSchema).array() ]).optional(),
   userId: z.union([ z.lazy(() => StringFilterSchema),z.string() ]).optional(),
-  userCode: z.union([ z.lazy(() => IntFilterSchema),z.number().int() ]).optional(),
+  userCode: z.union([ z.lazy(() => BigIntFilterSchema),z.bigint() ]).optional(),
   message: z.union([ z.lazy(() => StringFilterSchema),z.string() ]).optional(),
   toCharacterId: z.union([ z.lazy(() => IntFilterSchema),z.number().int() ]).optional(),
   fromCharacterId: z.union([ z.lazy(() => IntFilterSchema),z.number().int() ]).optional(),
@@ -391,7 +391,7 @@ export const ReviewScalarWhereWithAggregatesInputSchema: z.ZodType<Prisma.Review
   NOT: z.union([ z.lazy(() => ReviewScalarWhereWithAggregatesInputSchema),z.lazy(() => ReviewScalarWhereWithAggregatesInputSchema).array() ]).optional(),
   id: z.union([ z.lazy(() => StringWithAggregatesFilterSchema),z.string() ]).optional(),
   userId: z.union([ z.lazy(() => StringWithAggregatesFilterSchema),z.string() ]).optional(),
-  userCode: z.union([ z.lazy(() => IntWithAggregatesFilterSchema),z.number() ]).optional(),
+  userCode: z.union([ z.lazy(() => BigIntWithAggregatesFilterSchema),z.bigint() ]).optional(),
   message: z.union([ z.lazy(() => StringWithAggregatesFilterSchema),z.string() ]).optional(),
   toCharacterId: z.union([ z.lazy(() => IntWithAggregatesFilterSchema),z.number() ]).optional(),
   fromCharacterId: z.union([ z.lazy(() => IntWithAggregatesFilterSchema),z.number() ]).optional(),
@@ -597,7 +597,7 @@ export const UserUncheckedUpdateManyInputSchema: z.ZodType<Prisma.UserUncheckedU
 
 export const ReviewCreateInputSchema: z.ZodType<Prisma.ReviewCreateInput> = z.object({
   id: z.string().uuid().optional(),
-  userCode: z.number().int(),
+  userCode: z.bigint(),
   message: z.string(),
   emotionFlame: z.number().int(),
   createdAt: z.coerce.date().optional(),
@@ -611,7 +611,7 @@ export const ReviewCreateInputSchema: z.ZodType<Prisma.ReviewCreateInput> = z.ob
 export const ReviewUncheckedCreateInputSchema: z.ZodType<Prisma.ReviewUncheckedCreateInput> = z.object({
   id: z.string().uuid().optional(),
   userId: z.string(),
-  userCode: z.number().int(),
+  userCode: z.bigint(),
   message: z.string(),
   toCharacterId: z.number().int(),
   fromCharacterId: z.number().int(),
@@ -623,7 +623,7 @@ export const ReviewUncheckedCreateInputSchema: z.ZodType<Prisma.ReviewUncheckedC
 
 export const ReviewUpdateInputSchema: z.ZodType<Prisma.ReviewUpdateInput> = z.object({
   id: z.union([ z.string().uuid(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
-  userCode: z.union([ z.number().int(),z.lazy(() => IntFieldUpdateOperationsInputSchema) ]).optional(),
+  userCode: z.union([ z.bigint(),z.lazy(() => BigIntFieldUpdateOperationsInputSchema) ]).optional(),
   message: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   emotionFlame: z.union([ z.number().int(),z.lazy(() => IntFieldUpdateOperationsInputSchema) ]).optional(),
   createdAt: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
@@ -637,7 +637,7 @@ export const ReviewUpdateInputSchema: z.ZodType<Prisma.ReviewUpdateInput> = z.ob
 export const ReviewUncheckedUpdateInputSchema: z.ZodType<Prisma.ReviewUncheckedUpdateInput> = z.object({
   id: z.union([ z.string().uuid(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   userId: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
-  userCode: z.union([ z.number().int(),z.lazy(() => IntFieldUpdateOperationsInputSchema) ]).optional(),
+  userCode: z.union([ z.bigint(),z.lazy(() => BigIntFieldUpdateOperationsInputSchema) ]).optional(),
   message: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   toCharacterId: z.union([ z.number().int(),z.lazy(() => IntFieldUpdateOperationsInputSchema) ]).optional(),
   fromCharacterId: z.union([ z.number().int(),z.lazy(() => IntFieldUpdateOperationsInputSchema) ]).optional(),
@@ -650,7 +650,7 @@ export const ReviewUncheckedUpdateInputSchema: z.ZodType<Prisma.ReviewUncheckedU
 export const ReviewCreateManyInputSchema: z.ZodType<Prisma.ReviewCreateManyInput> = z.object({
   id: z.string().uuid().optional(),
   userId: z.string(),
-  userCode: z.number().int(),
+  userCode: z.bigint(),
   message: z.string(),
   toCharacterId: z.number().int(),
   fromCharacterId: z.number().int(),
@@ -660,7 +660,7 @@ export const ReviewCreateManyInputSchema: z.ZodType<Prisma.ReviewCreateManyInput
 
 export const ReviewUpdateManyMutationInputSchema: z.ZodType<Prisma.ReviewUpdateManyMutationInput> = z.object({
   id: z.union([ z.string().uuid(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
-  userCode: z.union([ z.number().int(),z.lazy(() => IntFieldUpdateOperationsInputSchema) ]).optional(),
+  userCode: z.union([ z.bigint(),z.lazy(() => BigIntFieldUpdateOperationsInputSchema) ]).optional(),
   message: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   emotionFlame: z.union([ z.number().int(),z.lazy(() => IntFieldUpdateOperationsInputSchema) ]).optional(),
   createdAt: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
@@ -669,7 +669,7 @@ export const ReviewUpdateManyMutationInputSchema: z.ZodType<Prisma.ReviewUpdateM
 export const ReviewUncheckedUpdateManyInputSchema: z.ZodType<Prisma.ReviewUncheckedUpdateManyInput> = z.object({
   id: z.union([ z.string().uuid(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   userId: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
-  userCode: z.union([ z.number().int(),z.lazy(() => IntFieldUpdateOperationsInputSchema) ]).optional(),
+  userCode: z.union([ z.bigint(),z.lazy(() => BigIntFieldUpdateOperationsInputSchema) ]).optional(),
   message: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   toCharacterId: z.union([ z.number().int(),z.lazy(() => IntFieldUpdateOperationsInputSchema) ]).optional(),
   fromCharacterId: z.union([ z.number().int(),z.lazy(() => IntFieldUpdateOperationsInputSchema) ]).optional(),
@@ -867,6 +867,17 @@ export const StringWithAggregatesFilterSchema: z.ZodType<Prisma.StringWithAggreg
   _max: z.lazy(() => NestedStringFilterSchema).optional()
 }).strict();
 
+export const BigIntFilterSchema: z.ZodType<Prisma.BigIntFilter> = z.object({
+  equals: z.bigint().optional(),
+  in: z.bigint().array().optional(),
+  notIn: z.bigint().array().optional(),
+  lt: z.bigint().optional(),
+  lte: z.bigint().optional(),
+  gt: z.bigint().optional(),
+  gte: z.bigint().optional(),
+  not: z.union([ z.bigint(),z.lazy(() => NestedBigIntFilterSchema) ]).optional(),
+}).strict();
+
 export const IntFilterSchema: z.ZodType<Prisma.IntFilter> = z.object({
   equals: z.number().optional(),
   in: z.number().array().optional(),
@@ -944,6 +955,22 @@ export const ReviewSumOrderByAggregateInputSchema: z.ZodType<Prisma.ReviewSumOrd
   toCharacterId: z.lazy(() => SortOrderSchema).optional(),
   fromCharacterId: z.lazy(() => SortOrderSchema).optional(),
   emotionFlame: z.lazy(() => SortOrderSchema).optional()
+}).strict();
+
+export const BigIntWithAggregatesFilterSchema: z.ZodType<Prisma.BigIntWithAggregatesFilter> = z.object({
+  equals: z.bigint().optional(),
+  in: z.bigint().array().optional(),
+  notIn: z.bigint().array().optional(),
+  lt: z.bigint().optional(),
+  lte: z.bigint().optional(),
+  gt: z.bigint().optional(),
+  gte: z.bigint().optional(),
+  not: z.union([ z.bigint(),z.lazy(() => NestedBigIntWithAggregatesFilterSchema) ]).optional(),
+  _count: z.lazy(() => NestedIntFilterSchema).optional(),
+  _avg: z.lazy(() => NestedFloatFilterSchema).optional(),
+  _sum: z.lazy(() => NestedBigIntFilterSchema).optional(),
+  _min: z.lazy(() => NestedBigIntFilterSchema).optional(),
+  _max: z.lazy(() => NestedBigIntFilterSchema).optional()
 }).strict();
 
 export const IntWithAggregatesFilterSchema: z.ZodType<Prisma.IntWithAggregatesFilter> = z.object({
@@ -1220,6 +1247,14 @@ export const UsersOnReviewBadUncheckedCreateNestedManyWithoutReviewInputSchema: 
   connect: z.union([ z.lazy(() => UsersOnReviewBadWhereUniqueInputSchema),z.lazy(() => UsersOnReviewBadWhereUniqueInputSchema).array() ]).optional(),
 }).strict();
 
+export const BigIntFieldUpdateOperationsInputSchema: z.ZodType<Prisma.BigIntFieldUpdateOperationsInput> = z.object({
+  set: z.bigint().optional(),
+  increment: z.bigint().optional(),
+  decrement: z.bigint().optional(),
+  multiply: z.bigint().optional(),
+  divide: z.bigint().optional()
+}).strict();
+
 export const IntFieldUpdateOperationsInputSchema: z.ZodType<Prisma.IntFieldUpdateOperationsInput> = z.object({
   set: z.number().optional(),
   increment: z.number().optional(),
@@ -1494,6 +1529,17 @@ export const NestedIntFilterSchema: z.ZodType<Prisma.NestedIntFilter> = z.object
   not: z.union([ z.number(),z.lazy(() => NestedIntFilterSchema) ]).optional(),
 }).strict();
 
+export const NestedBigIntFilterSchema: z.ZodType<Prisma.NestedBigIntFilter> = z.object({
+  equals: z.bigint().optional(),
+  in: z.bigint().array().optional(),
+  notIn: z.bigint().array().optional(),
+  lt: z.bigint().optional(),
+  lte: z.bigint().optional(),
+  gt: z.bigint().optional(),
+  gte: z.bigint().optional(),
+  not: z.union([ z.bigint(),z.lazy(() => NestedBigIntFilterSchema) ]).optional(),
+}).strict();
+
 export const NestedDateTimeFilterSchema: z.ZodType<Prisma.NestedDateTimeFilter> = z.object({
   equals: z.coerce.date().optional(),
   in: z.coerce.date().array().optional(),
@@ -1503,6 +1549,33 @@ export const NestedDateTimeFilterSchema: z.ZodType<Prisma.NestedDateTimeFilter> 
   gt: z.coerce.date().optional(),
   gte: z.coerce.date().optional(),
   not: z.union([ z.coerce.date(),z.lazy(() => NestedDateTimeFilterSchema) ]).optional(),
+}).strict();
+
+export const NestedBigIntWithAggregatesFilterSchema: z.ZodType<Prisma.NestedBigIntWithAggregatesFilter> = z.object({
+  equals: z.bigint().optional(),
+  in: z.bigint().array().optional(),
+  notIn: z.bigint().array().optional(),
+  lt: z.bigint().optional(),
+  lte: z.bigint().optional(),
+  gt: z.bigint().optional(),
+  gte: z.bigint().optional(),
+  not: z.union([ z.bigint(),z.lazy(() => NestedBigIntWithAggregatesFilterSchema) ]).optional(),
+  _count: z.lazy(() => NestedIntFilterSchema).optional(),
+  _avg: z.lazy(() => NestedFloatFilterSchema).optional(),
+  _sum: z.lazy(() => NestedBigIntFilterSchema).optional(),
+  _min: z.lazy(() => NestedBigIntFilterSchema).optional(),
+  _max: z.lazy(() => NestedBigIntFilterSchema).optional()
+}).strict();
+
+export const NestedFloatFilterSchema: z.ZodType<Prisma.NestedFloatFilter> = z.object({
+  equals: z.number().optional(),
+  in: z.number().array().optional(),
+  notIn: z.number().array().optional(),
+  lt: z.number().optional(),
+  lte: z.number().optional(),
+  gt: z.number().optional(),
+  gte: z.number().optional(),
+  not: z.union([ z.number(),z.lazy(() => NestedFloatFilterSchema) ]).optional(),
 }).strict();
 
 export const NestedIntWithAggregatesFilterSchema: z.ZodType<Prisma.NestedIntWithAggregatesFilter> = z.object({
@@ -1521,17 +1594,6 @@ export const NestedIntWithAggregatesFilterSchema: z.ZodType<Prisma.NestedIntWith
   _max: z.lazy(() => NestedIntFilterSchema).optional()
 }).strict();
 
-export const NestedFloatFilterSchema: z.ZodType<Prisma.NestedFloatFilter> = z.object({
-  equals: z.number().optional(),
-  in: z.number().array().optional(),
-  notIn: z.number().array().optional(),
-  lt: z.number().optional(),
-  lte: z.number().optional(),
-  gt: z.number().optional(),
-  gte: z.number().optional(),
-  not: z.union([ z.number(),z.lazy(() => NestedFloatFilterSchema) ]).optional(),
-}).strict();
-
 export const NestedDateTimeWithAggregatesFilterSchema: z.ZodType<Prisma.NestedDateTimeWithAggregatesFilter> = z.object({
   equals: z.coerce.date().optional(),
   in: z.coerce.date().array().optional(),
@@ -1548,7 +1610,7 @@ export const NestedDateTimeWithAggregatesFilterSchema: z.ZodType<Prisma.NestedDa
 
 export const ReviewCreateWithoutUserInputSchema: z.ZodType<Prisma.ReviewCreateWithoutUserInput> = z.object({
   id: z.string().uuid().optional(),
-  userCode: z.number().int(),
+  userCode: z.bigint(),
   message: z.string(),
   emotionFlame: z.number().int(),
   createdAt: z.coerce.date().optional(),
@@ -1560,7 +1622,7 @@ export const ReviewCreateWithoutUserInputSchema: z.ZodType<Prisma.ReviewCreateWi
 
 export const ReviewUncheckedCreateWithoutUserInputSchema: z.ZodType<Prisma.ReviewUncheckedCreateWithoutUserInput> = z.object({
   id: z.string().uuid().optional(),
-  userCode: z.number().int(),
+  userCode: z.bigint(),
   message: z.string(),
   toCharacterId: z.number().int(),
   fromCharacterId: z.number().int(),
@@ -1638,7 +1700,7 @@ export const ReviewScalarWhereInputSchema: z.ZodType<Prisma.ReviewScalarWhereInp
   NOT: z.union([ z.lazy(() => ReviewScalarWhereInputSchema),z.lazy(() => ReviewScalarWhereInputSchema).array() ]).optional(),
   id: z.union([ z.lazy(() => StringFilterSchema),z.string() ]).optional(),
   userId: z.union([ z.lazy(() => StringFilterSchema),z.string() ]).optional(),
-  userCode: z.union([ z.lazy(() => IntFilterSchema),z.number() ]).optional(),
+  userCode: z.union([ z.lazy(() => BigIntFilterSchema),z.bigint() ]).optional(),
   message: z.union([ z.lazy(() => StringFilterSchema),z.string() ]).optional(),
   toCharacterId: z.union([ z.lazy(() => IntFilterSchema),z.number() ]).optional(),
   fromCharacterId: z.union([ z.lazy(() => IntFilterSchema),z.number() ]).optional(),
@@ -1892,7 +1954,7 @@ export const UsersOnReviewBadUpdateManyWithWhereWithoutReviewInputSchema: z.ZodT
 
 export const ReviewCreateWithoutUsersOnReviewLikeInputSchema: z.ZodType<Prisma.ReviewCreateWithoutUsersOnReviewLikeInput> = z.object({
   id: z.string().uuid().optional(),
-  userCode: z.number().int(),
+  userCode: z.bigint(),
   message: z.string(),
   emotionFlame: z.number().int(),
   createdAt: z.coerce.date().optional(),
@@ -1905,7 +1967,7 @@ export const ReviewCreateWithoutUsersOnReviewLikeInputSchema: z.ZodType<Prisma.R
 export const ReviewUncheckedCreateWithoutUsersOnReviewLikeInputSchema: z.ZodType<Prisma.ReviewUncheckedCreateWithoutUsersOnReviewLikeInput> = z.object({
   id: z.string().uuid().optional(),
   userId: z.string(),
-  userCode: z.number().int(),
+  userCode: z.bigint(),
   message: z.string(),
   toCharacterId: z.number().int(),
   fromCharacterId: z.number().int(),
@@ -1953,7 +2015,7 @@ export const ReviewUpdateToOneWithWhereWithoutUsersOnReviewLikeInputSchema: z.Zo
 
 export const ReviewUpdateWithoutUsersOnReviewLikeInputSchema: z.ZodType<Prisma.ReviewUpdateWithoutUsersOnReviewLikeInput> = z.object({
   id: z.union([ z.string().uuid(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
-  userCode: z.union([ z.number().int(),z.lazy(() => IntFieldUpdateOperationsInputSchema) ]).optional(),
+  userCode: z.union([ z.bigint(),z.lazy(() => BigIntFieldUpdateOperationsInputSchema) ]).optional(),
   message: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   emotionFlame: z.union([ z.number().int(),z.lazy(() => IntFieldUpdateOperationsInputSchema) ]).optional(),
   createdAt: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
@@ -1966,7 +2028,7 @@ export const ReviewUpdateWithoutUsersOnReviewLikeInputSchema: z.ZodType<Prisma.R
 export const ReviewUncheckedUpdateWithoutUsersOnReviewLikeInputSchema: z.ZodType<Prisma.ReviewUncheckedUpdateWithoutUsersOnReviewLikeInput> = z.object({
   id: z.union([ z.string().uuid(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   userId: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
-  userCode: z.union([ z.number().int(),z.lazy(() => IntFieldUpdateOperationsInputSchema) ]).optional(),
+  userCode: z.union([ z.bigint(),z.lazy(() => BigIntFieldUpdateOperationsInputSchema) ]).optional(),
   message: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   toCharacterId: z.union([ z.number().int(),z.lazy(() => IntFieldUpdateOperationsInputSchema) ]).optional(),
   fromCharacterId: z.union([ z.number().int(),z.lazy(() => IntFieldUpdateOperationsInputSchema) ]).optional(),
@@ -2004,7 +2066,7 @@ export const UserUncheckedUpdateWithoutUsersOnReviewLikeInputSchema: z.ZodType<P
 
 export const ReviewCreateWithoutUsersOnReviewBadInputSchema: z.ZodType<Prisma.ReviewCreateWithoutUsersOnReviewBadInput> = z.object({
   id: z.string().uuid().optional(),
-  userCode: z.number().int(),
+  userCode: z.bigint(),
   message: z.string(),
   emotionFlame: z.number().int(),
   createdAt: z.coerce.date().optional(),
@@ -2017,7 +2079,7 @@ export const ReviewCreateWithoutUsersOnReviewBadInputSchema: z.ZodType<Prisma.Re
 export const ReviewUncheckedCreateWithoutUsersOnReviewBadInputSchema: z.ZodType<Prisma.ReviewUncheckedCreateWithoutUsersOnReviewBadInput> = z.object({
   id: z.string().uuid().optional(),
   userId: z.string(),
-  userCode: z.number().int(),
+  userCode: z.bigint(),
   message: z.string(),
   toCharacterId: z.number().int(),
   fromCharacterId: z.number().int(),
@@ -2065,7 +2127,7 @@ export const ReviewUpdateToOneWithWhereWithoutUsersOnReviewBadInputSchema: z.Zod
 
 export const ReviewUpdateWithoutUsersOnReviewBadInputSchema: z.ZodType<Prisma.ReviewUpdateWithoutUsersOnReviewBadInput> = z.object({
   id: z.union([ z.string().uuid(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
-  userCode: z.union([ z.number().int(),z.lazy(() => IntFieldUpdateOperationsInputSchema) ]).optional(),
+  userCode: z.union([ z.bigint(),z.lazy(() => BigIntFieldUpdateOperationsInputSchema) ]).optional(),
   message: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   emotionFlame: z.union([ z.number().int(),z.lazy(() => IntFieldUpdateOperationsInputSchema) ]).optional(),
   createdAt: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
@@ -2078,7 +2140,7 @@ export const ReviewUpdateWithoutUsersOnReviewBadInputSchema: z.ZodType<Prisma.Re
 export const ReviewUncheckedUpdateWithoutUsersOnReviewBadInputSchema: z.ZodType<Prisma.ReviewUncheckedUpdateWithoutUsersOnReviewBadInput> = z.object({
   id: z.union([ z.string().uuid(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   userId: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
-  userCode: z.union([ z.number().int(),z.lazy(() => IntFieldUpdateOperationsInputSchema) ]).optional(),
+  userCode: z.union([ z.bigint(),z.lazy(() => BigIntFieldUpdateOperationsInputSchema) ]).optional(),
   message: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   toCharacterId: z.union([ z.number().int(),z.lazy(() => IntFieldUpdateOperationsInputSchema) ]).optional(),
   fromCharacterId: z.union([ z.number().int(),z.lazy(() => IntFieldUpdateOperationsInputSchema) ]).optional(),
@@ -2116,7 +2178,7 @@ export const UserUncheckedUpdateWithoutUsersOnReviewBadInputSchema: z.ZodType<Pr
 
 export const ReviewCreateWithoutToInputSchema: z.ZodType<Prisma.ReviewCreateWithoutToInput> = z.object({
   id: z.string().uuid().optional(),
-  userCode: z.number().int(),
+  userCode: z.bigint(),
   message: z.string(),
   emotionFlame: z.number().int(),
   createdAt: z.coerce.date().optional(),
@@ -2129,7 +2191,7 @@ export const ReviewCreateWithoutToInputSchema: z.ZodType<Prisma.ReviewCreateWith
 export const ReviewUncheckedCreateWithoutToInputSchema: z.ZodType<Prisma.ReviewUncheckedCreateWithoutToInput> = z.object({
   id: z.string().uuid().optional(),
   userId: z.string(),
-  userCode: z.number().int(),
+  userCode: z.bigint(),
   message: z.string(),
   fromCharacterId: z.number().int(),
   emotionFlame: z.number().int(),
@@ -2150,7 +2212,7 @@ export const ReviewCreateManyToInputEnvelopeSchema: z.ZodType<Prisma.ReviewCreat
 
 export const ReviewCreateWithoutFromInputSchema: z.ZodType<Prisma.ReviewCreateWithoutFromInput> = z.object({
   id: z.string().uuid().optional(),
-  userCode: z.number().int(),
+  userCode: z.bigint(),
   message: z.string(),
   emotionFlame: z.number().int(),
   createdAt: z.coerce.date().optional(),
@@ -2163,7 +2225,7 @@ export const ReviewCreateWithoutFromInputSchema: z.ZodType<Prisma.ReviewCreateWi
 export const ReviewUncheckedCreateWithoutFromInputSchema: z.ZodType<Prisma.ReviewUncheckedCreateWithoutFromInput> = z.object({
   id: z.string().uuid().optional(),
   userId: z.string(),
-  userCode: z.number().int(),
+  userCode: z.bigint(),
   message: z.string(),
   toCharacterId: z.number().int(),
   emotionFlame: z.number().int(),
@@ -2216,7 +2278,7 @@ export const ReviewUpdateManyWithWhereWithoutFromInputSchema: z.ZodType<Prisma.R
 
 export const ReviewCreateManyUserInputSchema: z.ZodType<Prisma.ReviewCreateManyUserInput> = z.object({
   id: z.string().uuid().optional(),
-  userCode: z.number().int(),
+  userCode: z.bigint(),
   message: z.string(),
   toCharacterId: z.number().int(),
   fromCharacterId: z.number().int(),
@@ -2234,7 +2296,7 @@ export const UsersOnReviewBadCreateManyUserInputSchema: z.ZodType<Prisma.UsersOn
 
 export const ReviewUpdateWithoutUserInputSchema: z.ZodType<Prisma.ReviewUpdateWithoutUserInput> = z.object({
   id: z.union([ z.string().uuid(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
-  userCode: z.union([ z.number().int(),z.lazy(() => IntFieldUpdateOperationsInputSchema) ]).optional(),
+  userCode: z.union([ z.bigint(),z.lazy(() => BigIntFieldUpdateOperationsInputSchema) ]).optional(),
   message: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   emotionFlame: z.union([ z.number().int(),z.lazy(() => IntFieldUpdateOperationsInputSchema) ]).optional(),
   createdAt: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
@@ -2246,7 +2308,7 @@ export const ReviewUpdateWithoutUserInputSchema: z.ZodType<Prisma.ReviewUpdateWi
 
 export const ReviewUncheckedUpdateWithoutUserInputSchema: z.ZodType<Prisma.ReviewUncheckedUpdateWithoutUserInput> = z.object({
   id: z.union([ z.string().uuid(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
-  userCode: z.union([ z.number().int(),z.lazy(() => IntFieldUpdateOperationsInputSchema) ]).optional(),
+  userCode: z.union([ z.bigint(),z.lazy(() => BigIntFieldUpdateOperationsInputSchema) ]).optional(),
   message: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   toCharacterId: z.union([ z.number().int(),z.lazy(() => IntFieldUpdateOperationsInputSchema) ]).optional(),
   fromCharacterId: z.union([ z.number().int(),z.lazy(() => IntFieldUpdateOperationsInputSchema) ]).optional(),
@@ -2258,7 +2320,7 @@ export const ReviewUncheckedUpdateWithoutUserInputSchema: z.ZodType<Prisma.Revie
 
 export const ReviewUncheckedUpdateManyWithoutUserInputSchema: z.ZodType<Prisma.ReviewUncheckedUpdateManyWithoutUserInput> = z.object({
   id: z.union([ z.string().uuid(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
-  userCode: z.union([ z.number().int(),z.lazy(() => IntFieldUpdateOperationsInputSchema) ]).optional(),
+  userCode: z.union([ z.bigint(),z.lazy(() => BigIntFieldUpdateOperationsInputSchema) ]).optional(),
   message: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   toCharacterId: z.union([ z.number().int(),z.lazy(() => IntFieldUpdateOperationsInputSchema) ]).optional(),
   fromCharacterId: z.union([ z.number().int(),z.lazy(() => IntFieldUpdateOperationsInputSchema) ]).optional(),
@@ -2325,7 +2387,7 @@ export const UsersOnReviewBadUncheckedUpdateManyWithoutReviewInputSchema: z.ZodT
 export const ReviewCreateManyToInputSchema: z.ZodType<Prisma.ReviewCreateManyToInput> = z.object({
   id: z.string().uuid().optional(),
   userId: z.string(),
-  userCode: z.number().int(),
+  userCode: z.bigint(),
   message: z.string(),
   fromCharacterId: z.number().int(),
   emotionFlame: z.number().int(),
@@ -2335,7 +2397,7 @@ export const ReviewCreateManyToInputSchema: z.ZodType<Prisma.ReviewCreateManyToI
 export const ReviewCreateManyFromInputSchema: z.ZodType<Prisma.ReviewCreateManyFromInput> = z.object({
   id: z.string().uuid().optional(),
   userId: z.string(),
-  userCode: z.number().int(),
+  userCode: z.bigint(),
   message: z.string(),
   toCharacterId: z.number().int(),
   emotionFlame: z.number().int(),
@@ -2344,7 +2406,7 @@ export const ReviewCreateManyFromInputSchema: z.ZodType<Prisma.ReviewCreateManyF
 
 export const ReviewUpdateWithoutToInputSchema: z.ZodType<Prisma.ReviewUpdateWithoutToInput> = z.object({
   id: z.union([ z.string().uuid(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
-  userCode: z.union([ z.number().int(),z.lazy(() => IntFieldUpdateOperationsInputSchema) ]).optional(),
+  userCode: z.union([ z.bigint(),z.lazy(() => BigIntFieldUpdateOperationsInputSchema) ]).optional(),
   message: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   emotionFlame: z.union([ z.number().int(),z.lazy(() => IntFieldUpdateOperationsInputSchema) ]).optional(),
   createdAt: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
@@ -2357,7 +2419,7 @@ export const ReviewUpdateWithoutToInputSchema: z.ZodType<Prisma.ReviewUpdateWith
 export const ReviewUncheckedUpdateWithoutToInputSchema: z.ZodType<Prisma.ReviewUncheckedUpdateWithoutToInput> = z.object({
   id: z.union([ z.string().uuid(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   userId: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
-  userCode: z.union([ z.number().int(),z.lazy(() => IntFieldUpdateOperationsInputSchema) ]).optional(),
+  userCode: z.union([ z.bigint(),z.lazy(() => BigIntFieldUpdateOperationsInputSchema) ]).optional(),
   message: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   fromCharacterId: z.union([ z.number().int(),z.lazy(() => IntFieldUpdateOperationsInputSchema) ]).optional(),
   emotionFlame: z.union([ z.number().int(),z.lazy(() => IntFieldUpdateOperationsInputSchema) ]).optional(),
@@ -2369,7 +2431,7 @@ export const ReviewUncheckedUpdateWithoutToInputSchema: z.ZodType<Prisma.ReviewU
 export const ReviewUncheckedUpdateManyWithoutToInputSchema: z.ZodType<Prisma.ReviewUncheckedUpdateManyWithoutToInput> = z.object({
   id: z.union([ z.string().uuid(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   userId: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
-  userCode: z.union([ z.number().int(),z.lazy(() => IntFieldUpdateOperationsInputSchema) ]).optional(),
+  userCode: z.union([ z.bigint(),z.lazy(() => BigIntFieldUpdateOperationsInputSchema) ]).optional(),
   message: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   fromCharacterId: z.union([ z.number().int(),z.lazy(() => IntFieldUpdateOperationsInputSchema) ]).optional(),
   emotionFlame: z.union([ z.number().int(),z.lazy(() => IntFieldUpdateOperationsInputSchema) ]).optional(),
@@ -2378,7 +2440,7 @@ export const ReviewUncheckedUpdateManyWithoutToInputSchema: z.ZodType<Prisma.Rev
 
 export const ReviewUpdateWithoutFromInputSchema: z.ZodType<Prisma.ReviewUpdateWithoutFromInput> = z.object({
   id: z.union([ z.string().uuid(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
-  userCode: z.union([ z.number().int(),z.lazy(() => IntFieldUpdateOperationsInputSchema) ]).optional(),
+  userCode: z.union([ z.bigint(),z.lazy(() => BigIntFieldUpdateOperationsInputSchema) ]).optional(),
   message: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   emotionFlame: z.union([ z.number().int(),z.lazy(() => IntFieldUpdateOperationsInputSchema) ]).optional(),
   createdAt: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
@@ -2391,7 +2453,7 @@ export const ReviewUpdateWithoutFromInputSchema: z.ZodType<Prisma.ReviewUpdateWi
 export const ReviewUncheckedUpdateWithoutFromInputSchema: z.ZodType<Prisma.ReviewUncheckedUpdateWithoutFromInput> = z.object({
   id: z.union([ z.string().uuid(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   userId: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
-  userCode: z.union([ z.number().int(),z.lazy(() => IntFieldUpdateOperationsInputSchema) ]).optional(),
+  userCode: z.union([ z.bigint(),z.lazy(() => BigIntFieldUpdateOperationsInputSchema) ]).optional(),
   message: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   toCharacterId: z.union([ z.number().int(),z.lazy(() => IntFieldUpdateOperationsInputSchema) ]).optional(),
   emotionFlame: z.union([ z.number().int(),z.lazy(() => IntFieldUpdateOperationsInputSchema) ]).optional(),
@@ -2403,7 +2465,7 @@ export const ReviewUncheckedUpdateWithoutFromInputSchema: z.ZodType<Prisma.Revie
 export const ReviewUncheckedUpdateManyWithoutFromInputSchema: z.ZodType<Prisma.ReviewUncheckedUpdateManyWithoutFromInput> = z.object({
   id: z.union([ z.string().uuid(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   userId: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
-  userCode: z.union([ z.number().int(),z.lazy(() => IntFieldUpdateOperationsInputSchema) ]).optional(),
+  userCode: z.union([ z.bigint(),z.lazy(() => BigIntFieldUpdateOperationsInputSchema) ]).optional(),
   message: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   toCharacterId: z.union([ z.number().int(),z.lazy(() => IntFieldUpdateOperationsInputSchema) ]).optional(),
   emotionFlame: z.union([ z.number().int(),z.lazy(() => IntFieldUpdateOperationsInputSchema) ]).optional(),
