@@ -72,8 +72,6 @@ export const ReviewForm = ({ onClose }: Props) => {
       emotionFlame: data.emotionFlame,
     }
 
-    console.log(postData)
-
     await createReview(postData)
       .then(() => onClose())
       .catch(() => {})

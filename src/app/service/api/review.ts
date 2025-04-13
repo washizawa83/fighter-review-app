@@ -77,6 +77,40 @@ export const getReviews = async (userId?: string) => {
     })
 }
 
+export const getReviewsByUserCode = async ( userCode: number, userId?: string) => {
+    return await prisma.review.findMany({
+        where: {
+            userCode
+        },
+        include: {
+            to: true,
+            from: true,
+            _count: {
+                select: {
+                    UsersOnReviewLike: true,
+                    UsersOnReviewBad: true,
+                },
+            },
+            UsersOnReviewLike: {
+                where: {
+                  userId: userId,
+                },
+                select: {
+                  userId: true,
+                },
+            },
+            UsersOnReviewBad: {
+                where: {
+                    userId: userId,
+                },
+                select: {
+                    userId: true,
+                },
+            },
+        }
+    })
+}
+
 export const toggleEvaluationReview = async (reviewId: string, userId: string, type: ReviewEvaluationType) => {
     const like = await prisma.usersOnReviewLike.findFirst({where: {reviewId, userId}})
     const bad = await prisma.usersOnReviewBad.findFirst({where: {reviewId, userId}})
